@@ -49,7 +49,7 @@ interface User {
 }
 export default defineComponent({
   components: {
-    RefTest,
+    RefTest, 
   },
   /**
    * @description: 在创建组件之前执行，一旦 props setup(){}被解析，并作为组合式 API 的入口点（不可在用this）
