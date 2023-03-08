@@ -1,0 +1,33 @@
+{
+  //编译选项配置
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": false,//严格模式
+    "strictNullChecks": false,//严格模式检查
+    "noImplicitAny": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "#/*": ["types/*"],
+      "@img/*": ["src/assets/img/*"],
+      "@less/*": ["src/assets/less/*"],
+      "@libs/*": ["src/libs/*"],
+      "@plugins/*": ["src/plugins/*"],
+      "@cp/*": ["src/components/*"],
+      "@views/*": ["src/views/*"]
+    },
+    "types": ["element-plus/global"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
