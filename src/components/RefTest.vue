@@ -1,3 +1,7 @@
+<!--
+ * @LastEditTime: 2023-03-09 08:50:23
+ * @Descripttion: 
+-->
 <template>
   <!-- 给 DOM 元素添加 `ref` 属性 -->
   <p ref="msg">请留意该节点，有一个 ref 属性</p>
@@ -32,7 +36,6 @@ function useCalculator(): Calculator {
 // 在执行使用计算器函数时，可以获取到一个 Ref 变量和其他方法
 const { num, add } = useCalculator();
 add();
-console.log(num.value); // 1
 add();
 console.log(num.value); // 2
 export default defineComponent({

@@ -7,6 +7,7 @@
     "moduleResolution": "Node",
     "strict": false, //严格模式
     "strictNullChecks": false, //严格模式检查
+    "noImplicitUseStrict": true,//true:编译输出时不会调用\'use strict\'指令
     "noImplicitAny": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
@@ -26,7 +27,8 @@
       "@cp/*": ["src/components/*"],
       "@views/*": ["src/views/*"]
     },
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global"],
+    "experimentalDecorators": true//装饰器
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

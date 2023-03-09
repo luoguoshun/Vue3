@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2023-03-08 15:09:11
+ * @LastEditTime: 2023-03-09 09:54:35
  * @Descripttion: d.ts 文件是 TypeScript 用来声明变量、模块、type、interface 等等的。
  * 在 .d.ts 文件中声明变量或者模块后，在其他地方可以不用 import 导入就能直接使用，并且还有语法提示
  */
