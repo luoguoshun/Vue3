@@ -22,7 +22,7 @@
 import { computed, defineComponent, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Hello from '@/components/HelloWorld.vue';
-import { useUserStore } from '@/stores/piniaIndex';
+import { useUserStore } from '@/stores/Index';
 import { storeToRefs } from 'pinia';
 export default defineComponent({
   components: {
