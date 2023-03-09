@@ -7,7 +7,7 @@
     "moduleResolution": "Node",
     "strict": false, //严格模式
     "strictNullChecks": false, //严格模式检查
-    "noImplicitUseStrict": true,//true:编译输出时不会调用\'use strict\'指令
+    // "noImplicitUseStrict": true,//true:编译输出时不会调用\'use strict\'指令
     "noImplicitAny": true,
     "jsx": "preserve",
     "resolveJsonModule": true,

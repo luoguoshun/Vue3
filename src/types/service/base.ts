@@ -1,11 +1,9 @@
 /*
- * @LastEditTime: 2023-03-09 15:11:42
- * @Descripttion:
+ * @LastEditTime: 2023-03-09 15:14:39
+ * @Descripttion:TS基础
  */
-/*
- * @LastEditTime: 2023-03-09 14:12:16
- * @Descripttion: TS基础
- */
+
+//#region 使用接口声明类型
 /**
  * @description: 只读数组
  */
@@ -45,6 +43,7 @@ export const mySearch: SearchFunc = function (source: string, subString: string)
   let result = source.search(subString);
   return result > -1;
 };
+//#endregion
 
 //#region 可索引的类型：描述那些能够“通过索引得到”的类型
 /**

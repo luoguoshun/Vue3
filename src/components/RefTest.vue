@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2023-03-09 08:50:23
+ * @LastEditTime: 2023-03-09 15:43:29
  * @Descripttion: 
 -->
 <template>
@@ -51,11 +51,13 @@ export default defineComponent({
     onMounted(() => {
       // 比如获取 DOM 的文本
       //任何 Ref 对象的值都必须通过 xxx.value 才可以正确获取
-      if (msg.value) {
-        console.log(msg.value.innerText);
-      }
-        // 或者操作子组件里的数据
+      // if (msg.value) {
+      console.log(msg.value?.innerText);
+      // }
+      // 或者操作子组件里的数据
+      if (child.value) {
         child.value.isShowDialog = true;
+      }
     });
     // 必须 `return` 出去才可以给到 `<template />` 使用
     return { msg, child };
