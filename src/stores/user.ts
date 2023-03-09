@@ -1,6 +1,6 @@
 /*
- * @LastEditTime: 2023-03-09 18:26:39
- * @Descripttion:
+ * @LastEditTime: 2023-03-09 22:44:54
+ * @Descripttion:用户数据中心
  */
 import { defineStore } from 'pinia';
 export const useUserStore = defineStore('user', {
@@ -10,8 +10,8 @@ export const useUserStore = defineStore('user', {
       // 添加了一个随机消息数组
       randomMessages: [] as Array<string>,
       userInfo: {
-        name: 'lgs',
-        token: 'AAAAABBB',
+        name: '',
+        token: '',
       },
     };
   },
@@ -41,4 +41,5 @@ export const useUserStore = defineStore('user', {
       return 'Sync done.';
     },
   },
+  persist: true,//开启数据持久化
 });

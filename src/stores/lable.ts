@@ -10,4 +10,5 @@ export const useLableStore = defineStore('lable', {
   },
   getters: {},
   actions: {},
+  persist: true,//开启数据持久化
 });

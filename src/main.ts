@@ -1,13 +1,13 @@
 /*
- * @LastEditTime: 2023-03-09 17:48:16
- * @Descripttion:
+ * @LastEditTime: 2023-03-09 22:46:49
+ * @Descripttion: 入口文件
  */
 import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
 import router from '@/router';
-import store from '@/stores';
 import { createPinia } from 'pinia'; // 导入 Pinia
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'//数据持久化
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 const app = createApp(App);
@@ -16,4 +16,6 @@ app.config.errorHandler = (err, instance, info) => {
   // console.log(err, info);
 };
 app.config.unwrapInjectedRef = true;
-app.use(router).use(createPinia()).use(ElementPlus).mount('#app');
+const pinia = createPinia() // 初始化 Pinia
+pinia.use(piniaPluginPersistedstate) // 激活 Pinia 插件
+app.use(router).use(pinia).use(ElementPlus).mount('#app');
