@@ -1,15 +1,15 @@
 <!--
- * @LastEditTime: 2023-03-10 10:36:39
+ * @LastEditTime: 2023-03-10 17:03:19
  * @Descripttion: 
 -->
 <template>
   <div>
-    <!-- <router-view v-slot="{ Component, route }">
+    <router-view v-slot="{ Component, route }">
       <transition name="fade" mode="out-in">
         <component :is="Component" :key="route.path" />
       </transition>
-    </router-view> -->
-    <router-view> </router-view>
+    </router-view>
+    <!-- <router-view> </router-view> -->
   </div>
 </template>
 

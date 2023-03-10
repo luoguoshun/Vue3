@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2023-03-10 10:04:38
+ * @LastEditTime: 2023-03-10 17:05:15
  * @Descripttion: 顶部菜单
 -->
 <template>
@@ -19,7 +19,7 @@
         <template #title>系统设置</template>
         <el-menu-item index="/system/user">用户管理</el-menu-item>
         <el-menu-item index="/system/role">角色管理</el-menu-item>
-        <el-menu-item index="department">部门管理</el-menu-item>
+        <el-menu-item index="/system/department">部门管理</el-menu-item>
       </el-sub-menu>
       <el-menu-item index="3" disabled>Info</el-menu-item>
       <el-menu-item index="/practise">练习页面</el-menu-item>
@@ -27,20 +27,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-export default defineComponent({
-  setup() {
-    //获取当前路由
-    const route = useRoute();
-    const activeIndex = ref(route.path);
-    const handleSelect = (key: string, keyPath: string[]) => {
-      console.log(key, keyPath);
-    };
-    return { activeIndex, handleSelect };
-  },
-});
+//获取当前路由
+const route = useRoute();
+const activeIndex = ref(route.path);
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath);
+};
 </script>
 
 <style scoped></style>

@@ -7,7 +7,7 @@
     <Header></Header>
     <main>
       <el-card class="box-card">
-        <RouteView></RouteView>
+        <MyRouteView></MyRouteView>
       </el-card>
     </main>
   </div>
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import Header from '@/layout/Header.vue';
-import RouteView from '@/layout/RouteView.vue';
+import MyRouteView from '@/layout/RouteView.vue';
 </script>
 
 <style lang="less" scoped>
