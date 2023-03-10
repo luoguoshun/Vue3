@@ -1,13 +1,13 @@
 /*
- * @LastEditTime: 2023-03-10 16:56:18
+ * @LastEditTime: 2023-03-10 16:57:30
  * @Descripttion:用户数据中心
  */
 import { defineStore } from 'pinia';
 export const useUserStore = defineStore('user', {
   state: () => {
     return {
-      userId: '19300326',
-      name: '罗国顺',
+      userId: '',
+      name: '',
       headerImgUrl: '',
       roleIdStr: '',
       token: '',
