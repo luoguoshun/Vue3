@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2023-03-08 23:04:12
+ * @LastEditTime: 2023-03-10 09:00:06
  * @Descripttion: 布局页面
 -->
 <template>
@@ -7,7 +7,7 @@
     <Header></Header>
     <main>
       <el-card class="box-card">
-        <router-view></router-view>
+        <RouteView></RouteView>
       </el-card>
     </main>
   </div>
@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import Header from '@/layout/Header.vue';
+import RouteView from '@/layout/RouteView.vue';
 </script>
 
 <style lang="less" scoped>

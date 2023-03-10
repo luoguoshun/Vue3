@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2023-03-09 17:29:14
+ * @LastEditTime: 2023-03-10 11:17:20
  * @Descripttion: 首页
 -->
 <template>
@@ -60,7 +60,9 @@ export default defineComponent({
    * slots	非响应式对象	组件插槽，用于接收父组件传递进来的模板内容
    * emit	  方法	触发父组件绑定下来的事件
    */
-  setup(props: object, context: object) {
+  setup(props: object, { attrs, slots, emit }) {
+    console.log();
+
     //#region 响应式数据
     //注意：如果对Reactive 数据进行 ES6 的解构 操作，解构后得到的变量会失去响应性
     const data = reactive({

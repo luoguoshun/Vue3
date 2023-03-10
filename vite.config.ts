@@ -1,11 +1,11 @@
 /*
- * @LastEditTime: 2023-03-08 18:21:44
- * @Descripttion: 
+ * @LastEditTime: 2023-03-10 15:47:54
+ * @Descripttion:
  */
 import { defineConfig, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import fs from 'fs'; // 文件处理库
-import dotenv from 'dotenv';//读取环境变量
+import dotenv from 'dotenv'; //读取环境变量
 import { resolve } from 'path';
 
 // 更多配置浏览 https://vitejs.dev/config/
@@ -16,7 +16,7 @@ export default defineConfig(({ mode }: UserConfig): UserConfig => {
     base: ASR_ENV.VITE_PUBLIC_PATH,
     server: {
       host: '127.0.0.1',
-      port: 3000,
+      port: 8080,
       https: false,
       proxy: {
         [ASR_ENV.VITE_BASE_API]: {

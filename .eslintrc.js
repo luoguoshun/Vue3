@@ -1,3 +1,7 @@
+/*
+ * @LastEditTime: 2023-03-10 09:35:57
+ * @Descripttion: 
+ */
 /**
  * @description: ESLint 是一个查找 JavaScript / TypeScript 代码问题并提供修复建议的工具，
  */
@@ -21,6 +25,7 @@ module.exports = {
     'prettier/prettier': 'warn',
     'vue/multi-word-component-names': 'off',
   },
+  //全局编译器宏
   globals: {
     defineProps: 'readonly',
     defineEmits: 'readonly',

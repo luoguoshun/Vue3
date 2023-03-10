@@ -1,89 +1,90 @@
 <!--
- * @LastEditTime: 2023-03-08 09:53:07
- * @Descripttion: 登入页面
+ * @LastEditTime: 2023-03-10 16:51:45
+ * @Descripttion: 
 -->
 <template>
   <div id="login">
-    <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
-      <el-form-item label="密码" prop="pass" label-width="80">
-        <el-input v-model="ruleForm.password" type="password" autocomplete="off" />
+    <el-form ref="ruleFormRef" label-position="right" label-width="100px" :model="loginForm" style="max-width: 460px" status-icon :rules="rules">
+      <el-form-item label="账号" prop="accout">
+        <el-input v-model="loginForm.accout" />
       </el-form-item>
-      <el-form-item label="确认密码" prop="checkPass" label-width="80">
-        <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
+      <el-form-item label="密码" prop="pass">
+        <el-input v-model="loginForm.password" type="password" autocomplete="off" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm(ruleFormRef)">Submit</el-button>
-        <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+        <el-button type="primary" @click="submitForm(ruleFormRef)">提交</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
-<!-- 给 script 标签添加 setup 属性，那么整个 script 就直接会变成 setup 函数，
-所有顶级变量、函数，均会自动暴露给模板使用（无需再一个个 return 了 -->
 <script lang="ts" setup>
+import { FormInstance, FormRules } from 'element-plus';
 import { reactive, ref } from 'vue';
-import type { FormInstance, FormRules } from 'element-plus';
+import { doLogin } from '@/apis/user';
+import { useUserStore } from '@/stores/index';
+import { useRouter } from 'vue-router';
+const loginForm = reactive({
+  accout: '',
+  password: '',
+  type: '',
+});
+const userStore = useUserStore();
+console.log(userStore);
 
+const router = useRouter();
+//#region 校验
 const ruleFormRef = ref<FormInstance>();
-
 const validatePass = (rule: any, value: any, callback: any) => {
   if (value === '') {
     callback(new Error('Please input the password'));
   } else {
-    if (ruleForm.checkPass !== '') {
-      if (!ruleFormRef.value) return;
-      ruleFormRef.value.validateField('checkPass', () => null);
-    }
     callback();
   }
 };
-const validatePass2 = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('Please input the password again'));
-  } else if (value !== ruleForm.password) {
-    callback(new Error("Two inputs don't match!"));
-  } else {
-    callback();
-  }
-};
-
-const ruleForm = reactive({
-  password: '',
-  checkPass: '',
-  age: '',
-});
-
 const rules = reactive<FormRules>({
-  pass: [{ validator: validatePass, trigger: 'blur' }],
-  checkPass: [{ validator: validatePass2, trigger: 'blur' }],
+  accout: [{ required: true, message: 'Please input Activity name', trigger: 'blur' }],
+  password: [{ validator: validatePass, trigger: 'blur' }],
 });
+//#endregion
 
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
-  formEl.validate((valid) => {
+  formEl.validate((valid: any) => {
     if (valid) {
-      console.log('submit!');
+      doLogin(loginForm.accout, loginForm.password).then(
+        (result) => {
+          const { data, message, success } = result;
+          if (!success) {
+            return;
+          }
+          if (data.userInfo) {
+            userStore.$patch({
+              name: data.userInfo.name,
+              userId: data.userInfo.userId,
+              roleIdStr: data.userInfo.roleIdStr,
+              headerImgUrl: data.userInfo.headerImgUrl,
+              token: data.accessToken || null,
+              expiresIn: data.expiresIn,
+            });
+            router.push({ name: 'home' });
+          }
+        },
+        (error) => {
+          console.error(error);
+        },
+      );
     } else {
       console.log('error submit!');
       return false;
     }
   });
 };
-
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.resetFields();
-};
 </script>
-
 <style lang="less" scoped>
 #login {
-  border: 1px solid red;
-  .el-form {
-    .el-form-item {
-      // text-align: left;
-    }
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
