@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2023-03-10 16:48:24
+ * @LastEditTime: 2023-03-10 17:08:43
  * @Descripttion: 
 -->
 <template>
@@ -9,6 +9,7 @@
     </Hello>
     <div>
       <el-button type="danger" @click="goLogin" size="small">去登入</el-button>
+      <el-button type="primary" size="small" @Click="LastEditTime">弹出消息</el-button>
     </div>
     <div>
       <p>{{ name }}</p>
@@ -24,11 +25,13 @@ import { useRoute, useRouter } from 'vue-router';
 import Hello from '@/components/HelloWorld.vue';
 import { useUserStore } from '@/stores/index';
 import { storeToRefs } from 'pinia';
+import { ElMessage } from 'element-plus';
 export default defineComponent({
   components: {
     Hello,
   },
   setup() {
+    
     //#region 路由获取
     const routeCurrent = useRoute(); //获取当前路由
     const router = useRouter();
@@ -44,6 +47,12 @@ export default defineComponent({
         params: {
           id: 123,
         },
+      });
+    }
+    function LastEditTime() {
+      ElMessage({
+        message: 'Warning, this is a warning message.',
+        type: 'warning',
       });
     }
     //#endregion
@@ -76,7 +85,8 @@ export default defineComponent({
       store.updateName('aaaaa').then((res) => console.log(res));
     }
     //#endregion
-    return { goLogin, message, name, updateState, updateMessage };
+
+    return { goLogin, message, name, updateState, updateMessage, LastEditTime };
   },
 });
 </script>
