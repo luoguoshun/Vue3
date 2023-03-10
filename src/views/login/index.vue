@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2023-03-10 16:51:45
+ * @LastEditTime: 2023-03-10 16:58:47
  * @Descripttion: 
 -->
 <template>
@@ -30,8 +30,6 @@ const loginForm = reactive({
   type: '',
 });
 const userStore = useUserStore();
-console.log(userStore);
-
 const router = useRouter();
 //#region 校验
 const ruleFormRef = ref<FormInstance>();
